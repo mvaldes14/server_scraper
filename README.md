@@ -12,3 +12,7 @@
 - gem 'httparty', '~> 0.20.0'
 - gem "sqlite3", "~> 1.4"
 - gem "telebot", "~> 0.1.2"
+
+# TODO
+- Turn the script into a module
+- Put it in a cron job
