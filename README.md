@@ -7,8 +7,8 @@
 **Dummy project so I could practice some Ruby**
 
 # Requirements
-gem "pry"
-gem "nokogiri"
-gem 'httparty', '~> 0.20.0'
-gem "sqlite3", "~> 1.4"
-gem "telebot", "~> 0.1.2"
+- gem "pry"
+- gem "nokogiri"
+- gem 'httparty', '~> 0.20.0'
+- gem "sqlite3", "~> 1.4"
+- gem "telebot", "~> 0.1.2"
