@@ -1,4 +1,6 @@
 #!/usr/bin/ruby
+# frozen_string_literal: true
+
 require 'httparty'
 require 'nokogiri'
 require 'sqlite3'
@@ -49,14 +51,14 @@ def main(db, client, chat_id)
       log.info 'Server already in the db, skipping'
     end
   end
-  client.send_message(chat_id: chat_id, text: "NO NEW SERVER FOUND at #{Time.now.to_s}")
+  client.send_message(chat_id: chat_id, text: "NO NEW SERVER FOUND at #{Time.now}")
 end
 
 if $PROGRAM_NAME == __FILE__
   # Telegram settings
   token = ENV['TELEGRAM_TOKEN']
   chat_id = ENV['TELEGRAM_CHAT']
-  db = init_db()
+  db = init_db
   client = init_telegram(token)
   main(db, client, chat_id)
 end
