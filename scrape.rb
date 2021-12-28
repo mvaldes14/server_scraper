@@ -9,7 +9,7 @@ require 'logger'
 
 # Init DB
 def init_db
-  db = SQLite3::Database.open 'tracker.db'
+  db = SQLite3::Database.open "/home/#{ENV['USER']}/git/server_scraper/tracker.db"
   db.execute 'CREATE TABLE IF NOT EXISTS products(product TEXT, added TEXT)'
   db.results_as_hash = true
   db
@@ -28,7 +28,7 @@ end
 
 def main(db, client, chat_id)
   # Define Log
-  log = Logger.new('scraper.log')
+  log = Logger.new("/home/#{ENV['USER']}/git/server_scraper/scraper.log")
   log.level = Logger::INFO
   # Scrape results from site
   log.info "Starting script at: #{Time.now}"
