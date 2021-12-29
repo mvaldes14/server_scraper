@@ -1,0 +1,13 @@
+[Unit]
+Description=Run the server scraper script
+
+[Service]
+Type=oneshot
+User=$USER
+Group=$USER
+EnvironmentFile=/home/$USER/git/server_scraper/.env
+WorkingDirectory=/home/$USER/git/server_scraper
+ExecStart=/home/$USER/.local/share/gem/ruby/3.0.0/bin/bundle exec scrape.rb
+
+[Install]
+WantedBy=mutli-user.target
