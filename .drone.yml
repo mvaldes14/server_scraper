@@ -7,7 +7,7 @@ steps:
   image: ruby:2.5
   commands:
   - bundle install
-  - bundle exec scraper.rb
+  - bundle exec scrape.rb
 
 
 - name: send telegram notification
