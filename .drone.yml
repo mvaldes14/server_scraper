@@ -6,7 +6,8 @@ steps:
 - name: test
   image: ruby
   commands:
-  - bundle install --jobs=3 --retry=3
+  - bundle install
+  - bundle exec scraper.rb
 
 
 - name: send telegram notification
