@@ -7,3 +7,10 @@ steps:
   image: ruby
   commands:
   - bundle install --jobs=3 --retry=3
+
+
+- name: send telegram notification
+  image: appleboy/drone-telegram
+  settings:
+    token: 1625256489:AAG-x-4cABWDDqCDIfDA-wprs_rHuv_6XFc
+    to: 1571728109

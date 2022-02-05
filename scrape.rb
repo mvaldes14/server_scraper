@@ -51,7 +51,7 @@ def main(db, client, chat_id)
       log.info 'Server already in the db, skipping'
     end
   end
-  client.send_message(chat_id: chat_id, text: "NO NEW SERVER FOUND at #{Time.now}")
+  client.send_message(chat_id: chat_id, text: "NO NEW SERVER FOUND at #{Time.now}") unless chef_if_db.nil?
 end
 
 if $PROGRAM_NAME == __FILE__
