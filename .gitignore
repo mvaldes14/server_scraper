@@ -1,3 +1,4 @@
 .env
 tracker.db
 scraper.log
+Gemfile.lock
