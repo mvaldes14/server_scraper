@@ -7,6 +7,7 @@ require 'sqlite3'
 require 'telebot'
 require 'logger'
 
+
 # Init DB
 def init_db
   db = SQLite3::Database.open "/home/#{ENV['USER']}/git/server_scraper/tracker.db"
@@ -15,7 +16,7 @@ def init_db
   db
 end
 
-def init_telegram(token)
+def init_telegram(token, log)
   if token.nil?
     log.fatal 'Token not loaded, aborting'
     abort
@@ -26,10 +27,7 @@ def init_telegram(token)
   client
 end
 
-def main(db, client, chat_id)
-  # Define Log
-  log = Logger.new("/home/#{ENV['USER']}/git/server_scraper/scraper.log")
-  log.level = Logger::INFO
+def main(db, client, chat_id, log)
   # Scrape results from site
   log.info "Starting script at: #{Time.now}"
   url = 'https://www.freegeektwincities.org/computers'
@@ -51,14 +49,17 @@ def main(db, client, chat_id)
       log.info 'Server already in the db, skipping'
     end
   end
-  client.send_message(chat_id: chat_id, text: "NO NEW SERVER FOUND at #{Time.now}") unless chef_if_db.nil?
+  client.send_message(chat_id: chat_id, text: "NO NEW SERVER FOUND at #{Time.now}")
 end
 
 if $PROGRAM_NAME == __FILE__
+  # Define Log
+  log = Logger.new("/home/#{ENV['USER']}/git/server_scraper/scraper.log")
+  log.level = Logger::INFO
   # Telegram settings
   token = ENV['TELEGRAM_TOKEN']
   chat_id = ENV['TELEGRAM_CHAT']
   db = init_db
-  client = init_telegram(token)
-  main(db, client, chat_id)
+  client = init_telegram(token,log)
+  main(db, client, chat_id, log)
 end
