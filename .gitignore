@@ -2,3 +2,4 @@
 tracker.db
 scraper.log
 Gemfile.lock
+.direnv
