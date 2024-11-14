@@ -56,9 +56,9 @@ if $PROGRAM_NAME == __FILE__
   log = Logger.new("/home/#{ENV['USER']}/git/server_scraper/scraper.log")
   log.level = Logger::INFO
   # Telegram settings
-  token = ENV['TELEGRAM_TOKEN']
-  chat_id = ENV['TELEGRAM_CHAT']
+  token = ENV['TELEGRAM_HOMELAB_TOKEN']
+  chat_id = ENV['TELEGRAM_CHAT_ID']
   db = init_db
-  client = init_telegram(token,log)
+  client = init_telegram(token, log)
   main(db, client, chat_id, log)
 end
